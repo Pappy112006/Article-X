@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block head %} {{ super() }}
+<script
+  src="https://cdn.tiny.cloud/1/64l9w2fdmenj7pmwiwmeq474buv3rw028qjimrivnnjoyk77/tinymce/6/tinymce.min.js"
+  referrerpolicy="origin"
+></script>
+<script>
+  tinymce.init({
+    selector: "#editor",
+    plugins: "autolink lists link image imagetools media table code",
+    toolbar:
+      "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | code",
+    image_dimensions: false,
+    image_title: true,
+    imagetools_cors_hosts: ["picsum.photos"],
+    image_class_list: [{ title: "Responsive", value: "img-fluid" }],
+  });
+</script>
+{% endblock %} {% block body %}
+<h1>Add Article</h1>
+{% from "includes/_formhelper.html" import render_field %}
+<form method="POST" action="">
+  <div class="form-group">
+    {{ render_field(form.title, class_="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.body, class_="form-control", id="editor") }}
+  </div>
+  <p><input class="btn btn-primary" type="submit" value="Submit" /></p>
+</form>
+{% endblock %}

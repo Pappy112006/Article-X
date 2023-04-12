@@ -1,0 +1,15 @@
+{% extends 'layout.html' %} {% block body %}
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Welcome To ArticleX</h1>
+    <p class="lead">
+      This is a simple application with authentication  made with the  Python Flask micro-framework. Create and Save Articles to be read by others.
+    </p>
+    {% if session.logged_in == NUll %}
+    <a href="/register" class="btn btn-primary btn-lg">Register</a>
+    <a href="/login" class="btn btn-Success btn-lg">Login</a>
+
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
